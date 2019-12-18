@@ -36,6 +36,20 @@
              attribution : "OSM"
              });
              capa1.addTo(map);
+             L.marker([41.3954, 2.16859]).addTo(map).bindPopup('Hola punto');
+
+             map.on('click', function (e) {
+                 console.info(e);
+                new L.circleMarker(e.latlng, {
+                color: '#ffffff',
+                fillColor: '#00ff00',
+                fillOpacity: 0.9,
+                radius: 8
+                }).addTo(map)
+                .bindPopup(e.latlng.lat + "," + e.latlng.lng)
+                    .openPopup();
+            });
+
             }
         </script>
 
