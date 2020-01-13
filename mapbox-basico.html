@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Mapbox estilo</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%
+        }
+    </style>
+    <script>
+        //Añadir vuestor token y vuestro estilo
+        function init() {
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoibW50c2JoIiwiYSI6ImNrNGJobmV4ZTBkeHgza2tkenN3MjljMHoifQ.GE8vxOcykrIsx40tkejD0w';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mntsbh/ck5cpappu01xh1eqmxt6tsthv',
+                center: [2.16859, 41.3954],
+                zoom: 13,
+                attributionControl: false,
+                pitch:45,
+                hash:true
+            });
+            map.addControl(new mapboxgl.AttributionControl({compact: true}));
+            map.addControl(new mapboxgl.NavigationControl());
+            map.addControl(new mapboxgl.GeolocateControl());
+            var marker = new mapboxgl.Marker()
+                 .setLngLat([2.161648, 41.3977])
+                 .addTo(map);
+            
+                 map.on('load', function () {
+                map.addSource("viasciclables_source", {
+                    type: "vector",
+                    url: "mapbox://mntsbh.1cdja8hm" //poner mapbox://vuestro id
+                }); //fin map source
+
+                map.addLayer({
+                    id: "viasciclables",
+                    type: "line",
+                    source: "viasciclables_source",
+                    'source-layer': "VIES_CICLABLES-ah6u3n", //poner vuestro titulo capa
+                    paint:{
+                        'line-color':"#00ff00",
+                        "line-width":3
+                    }
+                });
+            });
+
+            map.on('click','viasciclables',function(e){
+
+            var text = "";
+            //console.info(e);
+            for (key in e.features[0].properties){
+
+             text += "<b>"+key+"</b>:"+e.features[0].properties[key]+"<br>";
+                }
+            new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(text)
+            .addTo(map);
+
+            });
+
+            map.on('mouseenter', 'viasciclables', function() {
+             map.getCanvas().style.cursor = 'pointer';                    
+            });
+
+            map.on('mouseleave', 'viasciclables', function() {
+            map.getCanvas().style.cursor = '';                    
+            });
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="map"></div>
+</body>
+
+</html>  
