@@ -33,7 +33,7 @@ function terremotosGeonamesToGeoJSON(respuestaGeonames){
         if (map.getZoom()> 8){
             mg=3;
         };
-        var peticion = 'http://api.geonames.org/earthquakesJSON?' +
+        var peticion = 'https://api.geonames.org/earthquakesJSON?' +
             'north=' + map.getBounds()._ne.lat + '&' +
             'south=' + map.getBounds()._sw.lat + '&' +
             'east=' + map.getBounds()._ne.lng + '&' +
