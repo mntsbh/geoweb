@@ -18,11 +18,11 @@ function addEdificiosCapa() {
     "paint": {
         "fill-extrusion-color": [
             "interpolate", ["linear"], ["number", ["get", "alt"]],
-            0, "#a8a5a5",
-            1, "#a8a5a5",
-            2, "#a8a5a5",
-            3, "#a8a5a5",
-            4, "#a8a5a5",
+            0, "#e3aa46",
+            1, "#e3aa46",
+            2, "#e3aa46",
+            3, "#e3aa46",
+            4, "#e3aa46",
             
         ],
         "fill-extrusion-height": [
