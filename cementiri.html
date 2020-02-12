@@ -1,0 +1,50 @@
+<html>
+    <head>
+    <meta charset='utf-8' />
+    <title>Cementiri de Girona</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/mapabase.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css"/>
+    <script src='js/utils.js'></script>
+    <script src='js/cementiri.js'></script>
+    <script>
+        //Añadir vuestor token y/o estilo !!
+        var map;
+        function init() {
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoibW50c2JoIiwiYSI6ImNrNGJobmV4ZTBkeHgza2tkenN3MjljMHoifQ.GE8vxOcykrIsx40tkejD0w';
+             map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mntsbh/ck6jo095p1hbx1iny0na5dqbn',
+                center: [2.837007, 41.972277],
+                zoom: 17,
+                hash: true,
+                pitch: 45,
+                attributionControl: false
+            });
+ 
+            map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+            map.addControl(new mapboxgl.NavigationControl());
+
+            
+
+            map.on('load', function () {
+             addEdificiosCapa();
+             
+          
+            }); //fin onload
+ 
+        } // final init
+    </script>
+    </head>
+ 
+    <body onload="init()">
+
+         
+        <div id="map"></div>
+    </body>
+ 
+    </html>
