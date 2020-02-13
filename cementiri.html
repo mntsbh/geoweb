@@ -24,6 +24,7 @@
                 hash: true,
                 pitch: 45,
                 attributionControl: false
+               
             });
  
             map.addControl(new mapboxgl.AttributionControl({ compact: true }));
@@ -33,6 +34,7 @@
 
             map.on('load', function () {
              addEdificiosCapa();
+             addMobiliarioCapa();
              
           
             }); //fin onload
@@ -43,6 +45,7 @@
  
     <body onload="init()">
 
+        <div id="title">Cementiri de Girona</div>
          
         <div id="map"></div>
     </body>

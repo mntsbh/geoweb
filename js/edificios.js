@@ -134,3 +134,5 @@ function addPopupToMapEdificios2(nombreCapa) {
         }
 
     }
+
+    

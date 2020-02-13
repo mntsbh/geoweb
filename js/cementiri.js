@@ -5,8 +5,7 @@ function addEdificiosCapa() {
         "url": "mapbox://mntsbh.9n6k2ui2"  // Nuestor ID Tileset
 
     }); //fin map source
-
-
+    
     map.addLayer({
     "id": "edificios",
     "type": "fill-extrusion",
@@ -37,6 +36,26 @@ function addEdificiosCapa() {
         ],
         "fill-extrusion-opacity": 0.9
     }
+},"road-label");     // fin addLayer capa texto "water-name-lakeline-platja", "road-label"
+
+}
+
+function addMobiliarioCapa() {
+
+    map.addSource("mobiliario_source", {
+        "type": "vector",
+        "url": "mapbox://mntsbh.9n6k2ui2"  // Nuestor ID Tileset
+
+    }); //fin map source
+    
+    map.addLayer({
+    "id": "mobiliario",
+    "type": "point",
+    "source": "mobiliario_source",
+    "source-layer": "mobiliario-9c8ie7", // Nuestro nombre Tileset
+    "maxzoom": 21,
+    "minzoom": 15,
+    
 },"road-label");     // fin addLayer capa texto "water-name-lakeline-platja", "road-label"
 
 }
@@ -77,8 +96,7 @@ function addPopupToMapEdificios2(nombreCapa) {
             map.getCanvas().style.cursor = '';
         });
     
-   
-
+       
     function filtrarEdificios(valor) {
         map.setFilter("edificios", [">", "numberOfFloorsAboveGround", parseInt(valor)]);
 
